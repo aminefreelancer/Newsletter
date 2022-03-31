@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 
 class PostController extends Controller
 {
@@ -44,6 +45,11 @@ class PostController extends Controller
         ]);
 
         $post = Post::create($attributes);
+
+        Artisan::call('emails:send', [
+            'post_id' => $post->id
+        ]);
+
         return response()->json(['message'=>'You have successfully added a new post.']);
     }
 
