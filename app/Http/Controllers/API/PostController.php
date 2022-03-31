@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Website;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class WebsiteController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,15 +37,23 @@ class WebsiteController extends Controller
     public function store(Request $request)
     {
         //
+        $attributes = $request->validate([
+            "title" => ['string', 'required', 'max:255'],
+            "description" => ['string', 'required'],
+            "website_id" => ['required', 'exists:websites,id']
+        ]);
+
+        $post = Post::create($attributes);
+        return response()->json(['message'=>'You have successfully added a new post.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Website  $website
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Website $website)
+    public function show(Post $post)
     {
         //
     }
@@ -52,10 +61,10 @@ class WebsiteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Website  $website
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Website $website)
+    public function edit(Post $post)
     {
         //
     }
@@ -64,10 +73,10 @@ class WebsiteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Website  $website
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Website $website)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -75,10 +84,10 @@ class WebsiteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Website  $website
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Website $website)
+    public function destroy(Post $post)
     {
         //
     }

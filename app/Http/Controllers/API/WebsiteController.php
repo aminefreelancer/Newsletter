@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Post;
+use App\Models\Website;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class WebsiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Website  $website
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Website $website)
     {
         //
     }
@@ -52,10 +53,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Website  $website
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Website $website)
     {
         //
     }
@@ -64,10 +65,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Website  $website
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Website $website)
     {
         //
     }
@@ -75,10 +76,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Website  $website
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Website $website)
     {
         //
     }
