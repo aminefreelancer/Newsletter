@@ -37,7 +37,13 @@ class SubscriberController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $attributes = $request->validate([
+            'user_id' => ['required', 'exists:users,id'],
+            'website_id' => ['required', 'exists:websites,id']
+        ]);
+
+        $subscriber = Subscriber::create($attributes);
+        return response()->json(['message'=>'You have been successfully subscribed.']);
     }
 
     /**
